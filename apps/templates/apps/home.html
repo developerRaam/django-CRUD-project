@@ -1,0 +1,30 @@
+{% include "apps/base.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row" style="height:100vh">
+            <div class="col-md-2 p-0 d-none d-md-block">
+                
+                    {% include 'apps/sidebar.html' %}
+            </div>
+            <div class="col-md-10 p-0 bg-light">
+                <div>
+                    {% include 'apps/navbar.html' %}
+                </div>
+                <div class="p-2">
+                    <h2>Hello <span class="text-secondary">{{user_name}}</span></h2>
+
+                    {% include 'apps/message.html' %}
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius vel aperiam nesciunt voluptatem eaque quam est non qui corporis nostrum quis, quasi maxime cumque quod magni possimus repudiandae. Illum molestias officia eligendi repudiandae illo sint. Ipsa, soluta obcaecati nesciunt quia voluptate recusandae enim vero culpa maxime nam nisi rem cumque quis tempore aperiam delectus autem! Quidem, maxime aliquam placeat distinctio fugiat obcaecati tempore dolor consequatur optio possimus aut. Non iste facere consequatur cumque esse nihil rerum, id labore debitis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

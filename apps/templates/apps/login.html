@@ -1,0 +1,46 @@
+{% include "apps/base.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 p-0 col-md-2 p-0 d-none d-md-block" style="height:100vh">
+                {% include 'apps/sidebar.html' %}
+            </div>
+            <div class="col-md-10 p-0 bg-light">
+                <div>
+                    {% include 'apps/navbar.html' %}
+                </div>
+                <div class="p-4">
+                    <h2>Welcome to Login </h2>
+                    {% include 'apps/message.html' %}
+                    <div class="d-flex justify-content-center">
+                        <div class="col-md-4 card p-3">
+                            <h4>Login</h4>
+                            <form action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-2">
+                                    <label for="">Username</label><br>
+                                    <input class="form-control" type="email" name="email" placeholder="Username">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="">Password</label><br>
+                                    <input class="form-control" type="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="">
+                                    <input class="btn btn-primary form-control" type="submit" name="submit" value="LOGIN" >
+                                </div>
+                                <div>
+                                    <p>Don't have an account?<a class="text-decoration-none fs-5" href="/register/">Register here!</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

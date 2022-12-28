@@ -1,0 +1,78 @@
+{% include "apps/base.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 p-0 col-md-2 p-0 d-none d-md-block">
+                {% include 'apps/sidebar.html' %}
+            </div>
+            <div class="col-md-10 p-0 bg-light">
+                <div>
+                    {% include 'apps/navbar.html' %}
+                </div>
+                <div class="p-4">
+                    <h4>New Master Incident</h4>
+                    <p>Initial Reporting</p><hr>
+                    <div>
+                        <form class="incident_form mb-5" action="{% url 'report' %}" method="post">
+                            {% csrf_token %}
+                            <div class="mt-3 d-flex">
+                                <label for="">Location</label>
+                                <input class="w-50" type="text" name="location">
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Incident Department</label>
+                                <textarea class="w-50" name="incident_department" id="" cols="30" rows="2"></textarea>
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Date and Time <br> Incident</label>
+                                <div>
+                                    <input type="datetime-local" name="date_time">
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Incident Location</label>
+                                <textarea class="w-50" name="incidnt_location" id="" cols="30" rows="2"></textarea>
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Incident Severity</label>
+                                <input class="w-50" type="text" name="incident_severity">
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Suspected Cause</label>
+                                <textarea class="w-50" name="suspected_cause" id="" cols="30" rows="2"></textarea>
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Immediate action <br>Taken</label>
+                                <input class="w-50" type="text" name="immediate_action">
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Sub Incident types</label>
+                                <div class="">
+                                    <input type="checkbox" value="Environmental Incident" name="incident_type[]"> Environmental Incident <br>
+                                    <input type="checkbox" value="Injury/Illness" name="incident_type[]"> Injury/Illness <br>
+                                    <input type="checkbox" value="Property Damage" name="incident_type[]"> Property Damage <br>
+                                    <input type="checkbox" value="Vehicle" name="incident_type[]"> Vehicle
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex">
+                                <label for="">Report by</label>
+                                <p>{{user_name}}</p>
+                            </div>
+                            <div class=" float-end">
+                                <input type="hidden" name="user_id" value="{{user_id}}" id="">
+                                <input class="btn btn-primary rounded-0" type="submit" name="submit" value="Save">
+                                <input class="btn btn-primary rounded-0" type="submit" name="submit" value="Save for later">
+                                <input class="btn btn-secondary rounded-0" type="submit" name="submit" value="Cancel">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
